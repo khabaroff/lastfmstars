@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Your Last.fm Stars</title>
+    <link href='style.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div class="fullScreen" id="fullScreen">
+    <canvas id="canvas2d"></canvas>
+</div>
+
+
+<div id="container"></div>
+
+
+<div id="search">
+    <form class="album-limit-form" oninput="output1.value=slider1.value">
+        <output>Top</output>
+        <input type="range" id="limitAlbums" name="slider1" value="20" min="1" max="99" step="1"/>
+        <output id="limitAlbumsHud" name="output1" for="slider1">20</output>
+        <output>albums for</output>
+    </form>
+
+    <input type="radio" name="radiog_lite" id="radio1" class="css-checkbox queryPeriod" value="7day"/>
+    <label for="radio1" class="css-label radGroup1">a week</label>
+
+    <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox queryPeriod" checked="checked" value="1month"/>
+    <label for="radio2" class="css-label radGroup1">a month</label>
+
+    <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox queryPeriod" value="3month"/>
+    <label for="radio3" class="css-label radGroup1">3 months</label>
+
+    <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox queryPeriod" value="6month"/>
+    <label for="radio4" class="css-label radGroup1">6 months</label>
+
+    <input type="radio" name="radiog_lite" id="radio5" class="css-checkbox queryPeriod" checked="checked" value="12month"/>
+    <label for="radio5" class="css-label radGroup1">a year</label>
+
+    <input type="radio" name="radiog_lite" id="radio6" class="css-checkbox queryPeriod" value="overall"/>
+    <label for="radio6" class="css-label radGroup1">all time</label>
+
+    <p>for last.fm user</p>
+
+    <input id="userName" type="text" value="_HAba">
+    <button id="button">search</button>
+</div>
+
+<script src="js/three.min.js"></script>
+<script src="js/tween.min.js"></script>
+<script src="js/CSS3DRenderer.js"></script>
+<script src="js/stars.js"></script>
+
+<script src="js/common.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.fullScreen {
+    height: 100%;
+}
+
+.album-limit-form {
+    white-space: nowrap;
+}
+
+#search {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 286px;
+    color: #0080ff;
+    font-size: 20px;
+    text-transform: uppercase;
+
+}
+
+#search input {
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #0080ff;
+    padding: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    -webkit-border-radius: 0; /* workaround for ios safari */
+}
+
+#search button {
+    color: #0080ff;
+    background-color: transparent;
+    border: 1px solid #0080ff;
+    padding: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+input[type='text'] {
+    width: 120px;
+}
+
+input[type=radio].css-checkbox {
+    display: none;
+}
+
+input[type=radio].css-checkbox + label.css-label {
+    padding-left: 42px;
+    height: 31px;
+    display: block;
+    line-height: 31px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 20px;
+    vertical-align: middle;
+    cursor: pointer;
+    color: #0080ff;
+    text-transform: uppercase;
+
+}
+
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -31px;
+}
+
+label.css-label {
+    background-image: url(rb.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-bottom: 10px;
+}
+
+input[type='range'] {
+    -webkit-appearance: none;
+    border-radius: 0;
+    background-color: transparent;
+    height: 1px;
+    vertical-align: middle;
+    color: red;
+    width: 50px;
+
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    width: 5px;
+    height: 5px;
+
+    -webkit-appearance: none;
+    border-radius: 5px;
+    border: 5px solid #0080ff;;
+
+}
+
+form {
+    padding-bottom: 10px;
+}
+
+.cover {
+    width: 300px;
+    height: 300px;
+    font-family: 'PT Sans', sans-serif;
+    color: #ccc;
+    border: none;
+    padding: 0;
+}
+
+
+.cover:hover {
+    border: none;
+}
+
+.cover > img {
+    display: block;
+    width: 300px;
+    height: 300px;
+}
+
+.cover:hover > img {
+
+    -moz-filter: blur(20px);
+    -o-filter: blur(20px);
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+
+    -webkit-transition: all 500ms cubic-bezier(0.485, 0, 0.365, 1); /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -moz-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -o-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490); /* custom */
+
+    -webkit-transition-timing-function: cubic-bezier(0.485, 0, 0.365, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -moz-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -o-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490); /* custom */
+
+
+
+}
+
+.noblur {width: 70px;
+    filter: none;
+    transform: none;
+
+}
+
+
+.title {
+    opacity: 0;
+    width: 260px;
+    height: 250px;
+    top: 0;
+    left: 20px;
+    position: absolute;
+    padding: auto 0;
+    display: table;
+}
+
+.cover:hover .title {
+    opacity: 1;
+    top: -20px;
+
+    -webkit-transition: all 500ms cubic-bezier(0.485, 0, 0.365, 1); /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -moz-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -o-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490); /* custom */
+
+    -webkit-transition-timing-function: cubic-bezier(0.485, 0, 0.365, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -moz-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -o-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490); /* custom */
+
+
+
+}
+
+.txt {
+    display: table-cell;
+    vertical-align: middle;
+    /* border: 1px solid red; */
+}
+
+h1 {
+    font-size: 26px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 18px;
+    text-align: center;
+    text-transform: uppercase;
+
+}
+
+.likes {
+    width: 260px;
+    height: 40px;
+    bottom: 0;
+    left: 20px;
+    position: absolute;
+    /*border: 1px solid red;*/
+    opacity: 0;
+    text-align: center;
+}
+
+.cover:hover .likes {
+    width: 260px;
+    bottom: 20px;
+    opacity: 1;
+
+    filter: none;
+    transform: none;
+
+
+    -webkit-transform: none; /* Safari and Chrome */
+    -moz-transform: none; /* Firefox */
+    -ms-transform: none; /* IE 9 */
+    -o-transform: none; /* Opera */
+    transform: none;
+
+
+
+    -webkit-transition: all 500ms cubic-bezier(0.485, 0, 0.365, 1); /* older webkit */
+    -webkit-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -moz-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -o-transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    transition: all 500ms cubic-bezier(0.485, -0.580, 0.365, 1.490); /* custom */
+
+    -webkit-transition-timing-function: cubic-bezier(0.485, 0, 0.365, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -moz-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    -o-transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490);
+    transition-timing-function: cubic-bezier(0.485, -0.580, 0.365, 1.490); /* custom */
+
+}
+
+
+
+/*
+
+<p><strong>Created by</strong><br/><a target="_blank" href="http://www.khabaroff.com/">Sergey Khabaroff</a></p>
+
+<p><strong>Supervised by</strong><br/><a target="_blank" href="http://tagart.ru/">Alex Batalov</a></p>
+
+<p><strong>Powered by</strong><br/><a target="_blank" href="www.last.fm/api">Last.fm API</a>,
+<a target="_blank" href="http://threejs.org/examples/#css3d_youtube">Three.js</a>,
+<a target="_blank" href="http://jsfiddle.net/ditman/8Ffrw/">Ditman's jsfiddle</a>,
+<a target="_blank" href="http://codepen.io/ajimix/pen/plfsb">Ajimix's Pen</a>,
+<a target="_blank" href="http://matthewlein.com/ceaser/">Matthew Lein's Ceaser</a>,
+<a target="_blank" href="http://www.csscheckbox.com/">CSS Checkbox</a>,
+<a target="_blank" href="http://en.wikipedia.org/wiki/Brian%27s_Brain">Brian's Brain pic</a></p>
+
+*/

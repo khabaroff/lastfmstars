@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+<meta id="type" property="og:type" content="website" />
+<meta id="title" property="og:title" content="" />
+<meta id="description" property="og:description" content="" />
+<meta id="url" property="og:url" content="" />
+<meta id="image" property="og:image" content="" />
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+<title>Share stars</title>
+	</head>
+
+<body>
+
+
+<script type='text/javascript'>
+
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+var ogartist = getParameterByName('artist');
+var ogalbum = getParameterByName('album');
+var ogimage = getParameterByName('coverimage');
+
+
+document.getElementById('title').setAttribute('content',ogartist);
+	 
+
+
+</script>
+
+
+
+
+<iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fgist.github.com%2Fjlong%2F2428561&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=521478417965932" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+
+</body>
+</html>
