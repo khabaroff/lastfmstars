@@ -51,7 +51,7 @@ var Element = function (album, currentQueryData) {
     likes.innerHTML = '<a target="_blank" class="share-cover-btn shareCoverBtn" href="share.php?'
     + 'user=' + encodeURIComponent(currentQueryData.username)
     + '&limit=' + encodeURIComponent(currentQueryData.limit)
-    + '&' + albumQuery + '"><img class=noblur src=http://localhost:63342/lastfmstars/share.png></a>';
+    + '&' + albumQuery + '"><img class=noblur src=../share.png></a>';
 
     //
 
