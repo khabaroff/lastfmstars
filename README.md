@@ -1,4 +1,4 @@
-<p><strong>Created by</strong><br/><a target="_blank" href="http://www.khabaroff.com/">Sergey Khabaroff</a></p>
+<p><strong>Created by</strong><br/><a target="_blank" href="http://www.facebook.com/khabaroff">Sergey Khabaroff</a></p>
 
 <p><strong>Supervised by</strong><br/><a target="_blank" href="http://tagart.ru/">Alex Batalov</a></p>
 
