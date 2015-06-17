@@ -58,6 +58,7 @@ $name = $album['name'];
 if (!empty($album['image']))
 {
     $cover = end($album['image']);
+
     if ($cover)
     {
         $cover = $cover['#text'];
@@ -76,9 +77,12 @@ $redirect_to = dirname($self_url) . "/#$username/$limit";
     <title></title>
 
     <meta property="og:title" content="I like <?= $username ?>'s top album: <?= $artist ?> — <?= $name ?>" />
-    <meta property="og:description" content="Visit <?= $username ?>'s Last.fm Stars project" />
+    <meta property="og:description"
+          content="Visit <?= $username ?>'s Last.fm stars project"/>
     <meta property="og:url" content="<?= $self_url ?>" />
-    <meta property="og:image" content="<?= $cover ?>" />
+    <? if ($cover) : ?>
+        <meta property="og:image" content="<?= $cover ?>"/>
+    <? endif ?>
 
     <meta http-equiv="refresh" content="0; url=<?php echo $redirect_to ?>" />
 

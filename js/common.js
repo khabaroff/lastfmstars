@@ -10,23 +10,17 @@ var Element = function (album, currentQueryData) {
     var dom = document.createElement('div');
     dom.className += 'cover';
 
-
-    var image = document.createElement('img');
-    //image.src = 'http://ecx.images-amazon.com/images/I/41A4A6ZEVNL.jpg';
-    image.src = album.image[3]['#text'];
-    dom.appendChild(image);
-
+    var albumImage = document.createElement('img');
+    dom.appendChild(albumImage);
 
     var title = document.createElement('div');
     title.className = 'title';
     dom.appendChild(title);
 
-
     var txt = document.createElement('div');
     txt.className = 'txt';
     txt.style.color = getRandomColor();
     title.appendChild(txt);
-
 
     var h1 = document.createElement('h1');
     h1.innerHTML = album.artist.name;
@@ -48,34 +42,23 @@ var Element = function (album, currentQueryData) {
         albumQuery = 'artist=' + encodeURIComponent(album.artist.name) + '&album=' + encodeURIComponent(album.name)
     }
 
-    likes.innerHTML = '<a target="_blank" class="share-cover-btn shareCoverBtn" href="share.php?'
-    + 'user=' + encodeURIComponent(currentQueryData.username)
-    + '&limit=' + encodeURIComponent(currentQueryData.limit)
-    + '&' + albumQuery + '"><img class=noblur src=../share.png></a>';
+    var siteUrl = location.origin + location.pathname.replace(/\/+$/, ''),
+        fbAppId = '1608604249419776',
+        shareLink = siteUrl + '/share.php'
+            + '?user=' + encodeURIComponent(currentQueryData.username)
+            + '&limit=' + encodeURIComponent(currentQueryData.limit)
+            + '&' + albumQuery,
+        redirectUrl = siteUrl + '/self-close.html'
 
-    //
+    var shareBtnHref = 'http://www.facebook.com/dialog/feed?'
+        + 'app_id=' + fbAppId
+        + '&link=' + encodeURIComponent(shareLink)
+        + '&redirect_uri=' + encodeURIComponent(redirectUrl)
+        + '&display=popup';
 
-    // <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fgist.github.com%2Fjlong%2F2428561&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=true&amp;share=false&amp;height=21&amp;appId=521478417965932" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
+    likes.innerHTML = '<a target="_blank" class="share-cover-btn shareCoverBtn" href="' + shareBtnHref + '"><img class=noblur src="./share.png"></a>';
 
     dom.appendChild(likes);
-
-
-    //var button = document.createElement( 'img' );
-    //button.style.position = 'absolute';
-    //button.style.left = ( ( 300 - 128 ) / 2 ) + 'px';
-    //button.style.top = ( ( 300 - 128 ) / 2 ) + 'px';
-    //button.style.visibility = 'hidden';
-    //button.style.WebkitFilter = 'opacity(30%)';
-    //button.src = '';
-    //dom.appendChild( button );
-
-    ////var blocker = document.createElement( 'div' );
-    //blocker.style.position = 'absolute';
-    ////blocker.style.width = '300px';
-    //blocker.style.height = '300px';
-    ////blocker.style.background = 'rgba(255,255,255,0.2)';
-    //blocker.style.cursor = 'pointer';
-    //dom.appendChild( blocker );
 
     var object = new THREE.CSS3DObject(dom);
     object.position.x = Math.random() * 4000 - 2000;
@@ -83,22 +66,22 @@ var Element = function (album, currentQueryData) {
     object.position.y = 3000;
     object.position.z = Math.random() * -5000;
 
-    //
+    var searchButton = document.getElementById('button')
 
-    image.addEventListener('load', function (event) {
-
-        button.style.visibility = 'visible';
+    albumImage.onload = function () {
+        searchButton.style.visibility = 'visible';
 
         new TWEEN.Tween(object.position)
             .to({y: Math.random() * 2000 - 1000}, 2000)
             .easing(TWEEN.Easing.Exponential.Out)
             .start();
+    };
 
-    }, false);
+    albumImage.src = album.image[3]['#text'];
 
     dom.addEventListener('mouseover', function () {
 
-        button.style.WebkitFilter = '';
+        searchButton.style.WebkitFilter = '';
 //        blocker.style.background = 'rgba(0,0,0,0)';
 
     }, false);
@@ -223,12 +206,12 @@ function init() {
 
         auto = true;
 
-        //if ( player !== undefined ) {
-
-        //	player.parentNode.removeChild( player );
-        //	player = undefined;
-
-        //}
+        /*
+         if (player !== undefined) {
+         player.parentNode.removeChild(player);
+         player = undefined;
+         }
+         */
 
         new TWEEN.Tween(camera.position)
             .to({x: 0, y: -25}, 1500)
@@ -348,24 +331,22 @@ function getCurrentQueryData() {
 function search(e) {
     var queryData = getCurrentQueryData()
 
+    var iterationTweenCreate = function (i) {
+        var object = scene.children[i];
+        var delay = i * 15;
+
+        new TWEEN.Tween(object.position)
+            .to({y: -2000}, 1000)
+            .delay(delay)
+            .easing(TWEEN.Easing.Exponential.In)
+            .onComplete(function () {
+                scene.remove(object);
+            })
+            .start();
+    }
+
     for (var i = 0, l = scene.children.length; i < l; i++) {
-
-        (function () {
-
-            var object = scene.children[i];
-            var delay = i * 15;
-
-            new TWEEN.Tween(object.position)
-                .to({y: -2000}, 1000)
-                .delay(delay)
-                .easing(TWEEN.Easing.Exponential.In)
-                .onComplete(function () {
-                    scene.remove(object);
-                })
-                .start();
-
-        })();
-
+        iterationTweenCreate(i)
     }
 
     var request = new XMLHttpRequest();
@@ -424,13 +405,10 @@ function move(delta) {
         object.position.z += delta;
 
         if (object.position.z > 0) {
-
             object.position.z -= 5000;
-
-        } else if (object.position.z < -5000) {
-
+        }
+        else if (object.position.z < -5000) {
             object.position.z += 5000;
-
         }
 
     }
@@ -461,9 +439,8 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-//
-//TODO
+//TODO:
 //добавить плитку титров
-////добавить шеры
+//добавить шеры
 //картинки шеров
 //фавиконка
