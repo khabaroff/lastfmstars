@@ -1,3 +1,5 @@
+<img src="https://khabaroff.com/wp-content/uploads/2017/04/last-share.jpg">
+
 <p><strong>Created by</strong><br/><a target="_blank" href="http://www.facebook.com/khabaroff">Sergey Khabaroff</a></p>
 
 <p><strong>Supervised by</strong><br/><a target="_blank" href="http://tagart.ru/">Alex Batalov</a></p>
